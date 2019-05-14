@@ -1,6 +1,6 @@
 Directory-Digger
 ===============
-This repository hosts a simple program made to list directory tree (in version 0.9 you need to copy the output to a choose file yourself -a save to file option is coming in v 1.0) 
+This repository hosts a simple program made to list directory tree and save it to a txt file.
 
 You can launch Directory Digger directly using DirectoryDigger.py or DirectoryDigger.exe
 
