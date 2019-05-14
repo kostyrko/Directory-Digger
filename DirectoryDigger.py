@@ -5,7 +5,7 @@ import os
 
 # ========================SETTINGS=====================
 root = Tk()
-root.title("Directory Digger ver. 0.9.2")
+root.title("Directory Digger ver. 1.0")
 color1 = 'gray77'
 color2='gray60'
 font1='consolas', 11
@@ -35,13 +35,22 @@ def run():
       result.insert(END, '{}{}\n'.format(indent,root).upper())
       result.insert(END, '{}{}\n'.format(subindent,files))
 
+def save():
+   filename=filedialog.asksaveasfile(defaultextension=".txt",
+      filetypes=[('text files', '.txt'), ('all files', '.*')])
+   if filename is None:
+      return
+   text2save=str(result.get(1.0,END))
+   filename.write(text2save)
+   filename.close()
+
 def clear():
     result.delete("1.0", END)
     dir_path.delete(0, END)
 
 def about():
    messagebox.showinfo('About','''Created by @kostyrko (GitHub) to map directory
-   \n (use under GPLv3 license) ''')
+   \n (use under CC BY-SA 4.0 license) ''')
    
 # ========================ENTRY&BUTTONS==================
 dir_path = Entry(top,font=font1,width=500,bd=4,textvariable=folder_path)
@@ -53,6 +62,9 @@ browsebt.pack(side=LEFT,padx=5, pady=5)
 runbt = Button(top2,text="Run", command=run)
 runbt.pack(side=LEFT,padx=5, pady=5)
 
+savebt = Button(top2,text="Save result", command=save)
+savebt.pack(side=LEFT,padx=5, pady=5)
+
 clearbt=Button(top2,text="Clear", command=clear)
 clearbt.pack(side=LEFT,padx=5, pady=5)
 
@@ -63,7 +75,7 @@ sb1=Scrollbar(root)
 sb1.pack(side=RIGHT, fill=Y)
 sb2=Scrollbar(root, orient=HORIZONTAL)
 sb2.pack(side=BOTTOM, fill=X)
-result = Text(root,font=font1,wrap=NONE,yscrollcommand = sb1.set,xscrollcommand = sb2.set  )
+result=Text(root,font=font1,wrap=NONE,yscrollcommand=sb1.set,xscrollcommand=sb2.set)
 result.pack(side = LEFT, fill=BOTH, expand=1)
 sb1.config(command = result.yview )
 sb2.config(command = result.xview )
