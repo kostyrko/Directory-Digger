@@ -23,7 +23,6 @@ folder_path=StringVar()
 
 # ========================FUNCTIONS====================
 def browse():
-   global folder_path
    folder_selected = filedialog.askdirectory()
    folder_path.set(folder_selected)
 
