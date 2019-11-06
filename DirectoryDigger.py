@@ -49,7 +49,7 @@ def clear():
 
 def about():
    messagebox.showinfo('About','''Created by @kostyrko (GitHub) to map directory
-   \n (use under CC BY-SA 4.0 license) ''')
+   \n (use under under the GPLv3 license) ''')
    
 # ========================ENTRY&BUTTONS==================
 dir_path = Entry(top,font=font1,width=500,bd=4,textvariable=folder_path)
