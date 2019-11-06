@@ -5,7 +5,7 @@ import os
 
 # ========================SETTINGS=====================
 root = Tk()
-root.title("Directory Digger ver. 1.0")
+root.title("Directory Digger ver. 1.1")
 color1 = 'gray77'
 color2='gray60'
 font1='consolas', 11
@@ -35,13 +35,15 @@ def run():
       result.insert(END, '{}{}\n'.format(subindent,files))
 
 def save():
-   filename=filedialog.asksaveasfile(defaultextension=".txt",
-      filetypes=[('text files', '.txt'), ('all files', '.*')])
+   filename=filedialog.asksaveasfilename(defaultextension=".json",
+      filetypes=[('JSON file', '.json'),('text file', '.txt'), ('all files', '.*')])
    if filename is None:
       return
-   text2save=str(result.get(1.0,END))
-   filename.write(text2save)
-   filename.close()
+   else:
+      with open(filename, "wt", encoding='utf-8') as filesave:
+         text2save=str(result.get(1.0,END))
+         filesave.write(text2save)
+         filesave.close()
 
 def clear():
     result.delete("1.0", END)
