@@ -5,7 +5,7 @@ import os
 
 # ========================SETTINGS=====================
 root = Tk()
-root.title("Directory Digger ver. 1.1")
+root.title("Directory Digger ver. 1.1.1")
 color1 = 'gray77'
 color2='gray60'
 font1='consolas', 11
@@ -44,6 +44,7 @@ def save():
          text2save=str(result.get(1.0,END))
          filesave.write(text2save)
          filesave.close()
+         messagebox.showinfo('SAVED', 'File has been saved successfully!')
 
 def clear():
     result.delete("1.0", END)
