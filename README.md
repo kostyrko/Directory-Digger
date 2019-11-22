@@ -4,7 +4,7 @@ This repository hosts a simple program made to list directory tree and save it t
 
 You can launch Directory Digger directly using DirectoryDigger.py or DirectoryDigger.exe
 
-![](images/DirectoryDigger_v1.PNG)
+![](Directory_Digger_v1_1_2.jpg)
 
 License
 -------
