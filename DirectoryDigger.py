@@ -5,7 +5,7 @@ import os
 
 # ========================SETTINGS=====================
 root = Tk()
-root.title("Directory Digger ver. 1.1.1")
+root.title("Directory Digger ver. 1.1.3")
 color1 = 'gray77'
 color2 = 'gray60'
 font1 = 'consolas', 11
