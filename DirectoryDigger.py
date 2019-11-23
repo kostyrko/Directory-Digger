@@ -58,13 +58,13 @@ def about():
    
 # ========================ENTRY&BUTTONS==================
 dir_path = Entry(top,font=font1,width=500,bd=4,textvariable=folder_path)
-dir_path.pack(side=TOP,padx=5 pady=5)
+dir_path.pack(side=TOP,padx=5,pady=5)
 
 browsebt = Button(top2,text="Browse",command=browse)
-browsebt.pack(side=LEFT,padx=5, pady=5)
+browsebt.pack(side=LEFT,padx=5,pady=5)
 
 runbt = Button(top2,text="Run",command=run)
-runbt.pack(side=LEFT,padx=5, pady=5)
+runbt.pack(side=LEFT,padx=5,pady=5)
 
 savebt = Button(top2,text="Save result",command=save)
 savebt.pack(side=LEFT,padx=5,pady=5)
