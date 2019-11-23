@@ -32,8 +32,14 @@ def run():
       indent = ' '* 4 *(level)
       indent2 = ' '* 4 *(level)
       subindent = indent2 + '|' + ('-'* 4 *(level))
-      result.insert(END,'{}{}\n'.format(indent,root).upper())
-      result.insert(END,'{}{}\n'.format(subindent,files))
+      if dirs == []:
+         pass
+      else:
+         result.insert(END, '{}{}\n'.format(indent,dirs).upper())
+      if files == []:
+         pass
+      else:
+         result.insert(END, '{}{}\n'.format(subindent,files))
       result.insert(END,'{}\n'.format(indent2))
 
 def save():
