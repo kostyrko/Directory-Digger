@@ -5,7 +5,7 @@ import os
 
 # ========================SETTINGS=====================
 root = Tk()
-root.title("Directory Digger ver. 1.1.3")
+root.title("Directory Digger ver. 1.1.4")
 color1 = 'gray77'
 color2 = 'gray60'
 font1 = 'consolas', 11
@@ -28,19 +28,15 @@ def browse():
 
 def run():
    for root, dirs, files in os.walk(folder_path.get()):
-      level = root.replace(folder_path.get(),'').count(os.sep)
-      indent = ' '* 4 *(level)
-      indent2 = ' '* 4 *(level)
-      subindent = indent2 + '|' + ('-'* 4 *(level))
-      if dirs == []:
-         pass
-      else:
-         result.insert(END, '{}{}\n'.format(indent,dirs).upper())
-      if files == []:
-         pass
-      else:
-         result.insert(END, '{}{}\n'.format(subindent,files))
-      result.insert(END,'{}\n'.format(indent2))
+      level = root.replace(folder_path.get(), '').count(os.sep)
+      indent = ' ' * 4 * (level)
+      subindent = ' ' * 4 * (level + 1)
+      indent2 = ' ' * 4 * (level)
+      subindent = indent2 + '|' + ('-' * 4 * (level))
+      result.insert(END, '{}{}\n'.format(indent,root).upper())
+      result.insert(END, '{}{}\n'.format(subindent,files))
+      result.insert(END, '{}{}\n'.format(indent,dirs).upper())
+      result.insert(END, '{}\n'.format(indent2))
 
 def save():
    filename = filedialog.asksaveasfilename(defaultextension=".json",
