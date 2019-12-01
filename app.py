@@ -3,9 +3,9 @@ from tkinter import filedialog
 from tkinter import messagebox
 import os
 
-# ========================SETTINGS=====================
+# ======================== SETTINGS =====================
 root = Tk()
-root.title("Directory Digger ver. 1.1.5")
+root.title("Directory Digger ver. 1.2")
 color1 = 'gray77'
 color2 = 'gray60'
 font1 = 'consolas', 11
@@ -13,18 +13,18 @@ root.geometry('800x500')
 root.configure(bg=color1)
 root.resizable(width=True,height=True)
 
-# ========================FRAMES=======================
+# ======================== FRAMES =======================
 top = Frame(root,width=600,height=50,bg=color2)
 top.pack()
 top2 = Frame(root,width=600, height=50, bg=color2)
 top2.pack()
 top3 = Frame(root,width=600, height=50, bg=color1)
 top3.pack()
-# ========================VARIABLES====================
+# ======================== VARIABLES ====================
 folder_path = StringVar()
 file_name = StringVar()
 
-# ========================FUNCTIONS====================
+# ======================== FUNCTIONS ====================
 def browse():
    folder_selected = filedialog.askdirectory()
    folder_path.set(folder_selected)
@@ -42,7 +42,15 @@ def run():
       result.insert(END, '{}\n'.format(indent2))
 
 def seek():
-   messagebox.showinfo('Directory Digger', 'In statu nascendi\nOption not available yet', icon='warning')
+   if file_name.get() is '':
+      return result.insert(END, 'No file name given')
+   else:
+      for root, dirs, files in os.walk(folder_path.get()):
+         for file in files:
+            if file_name.get() in file:
+                found = os.path.join(root,file)
+                result.insert(END, '\n{}'.format(found))
+
 
 def save():
    filename = filedialog.asksaveasfilename(defaultextension=".json",
@@ -58,7 +66,8 @@ def save():
 
 def clear():
     result.delete("1.0",END)
-    dir_path.delete(0,END)
+   #  dir_path.delete(0,END)
+   #  file_name.delete(0,END)
 
 def about():
    messagebox.showinfo('About','''Created by @kostyrko (GitHub) to map directory
@@ -92,7 +101,7 @@ runbt.pack(side=LEFT,padx=5,pady=5)
 savebt = Button(top3,text="Save result",command=save)
 savebt.pack(side=LEFT,padx=5,pady=5)
 
-clearbt = Button(top3,width=10, text="Clear",command=clear)
+clearbt = Button(top3,width=10, text="Clear Result",command=clear)
 clearbt.pack(side=LEFT,padx=5,pady=5)
 
 aboutbt = Button(top3,width=10, text="About",command=about)
@@ -101,7 +110,7 @@ aboutbt.pack(side=LEFT,padx=5,pady=5)
 btn_exit = Button(top3, width=10, text="Exit", command=close)
 btn_exit.pack(side=LEFT) 
 
-# =================RESULT_WINDOW+SCROLLBARS==============
+# ================= RESULT_WINDOW+SCROLLBARS ==============
 sb1 = Scrollbar(root)
 sb1.pack(side=RIGHT,fill=Y)
 sb2 = Scrollbar(root,orient=HORIZONTAL)
@@ -110,6 +119,6 @@ result = Text(root,font=font1,wrap=NONE,yscrollcommand=sb1.set,xscrollcommand=sb
 result.pack(side=LEFT,fill=BOTH,expand=1)
 sb1.config(command=result.yview )
 sb2.config(command=result.xview )
-# ========================END==========================
+# ======================== END ==========================
 if __name__ == '__main__':
     root.mainloop()
