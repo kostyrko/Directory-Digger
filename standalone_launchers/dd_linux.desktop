@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name= DDlinux_launcher
+Comment= add file path to dd_linux below
+Exec= '/full/path/to/DDlinux'
+Terminal=false
+Type=Application
