@@ -5,7 +5,7 @@ import os
 
 # ======================== SETTINGS =====================
 root = Tk()
-root.title("Directory Digger ver. 1.2")
+root.title("Directory Digger ver. 1.2.1")
 color1 = 'gray77'
 color2 = 'gray60'
 font1 = 'consolas', 11
@@ -42,7 +42,7 @@ def run():
       result.insert(END, '{}\n'.format(indent2))
 
 def seek():
-   if file_name.get() is '':
+   if file_name.get() == '':
       return result.insert(END, 'No file name given')
    else:
       for root, dirs, files in os.walk(folder_path.get()):
@@ -80,7 +80,7 @@ def close():
       exit()
    
 # ======================== ENTRY, BUTTONS & LABELS==================
-browsebt = Button(top,text="Browse",command=browse)
+browsebt = Button(top,text="Browse",bg='dark red',fg= 'white',command=browse)
 browsebt.pack(side=LEFT,padx=5,pady=5)
 
 dir_path = Entry(top,font=font1,width=500,bd=4,textvariable=folder_path)
